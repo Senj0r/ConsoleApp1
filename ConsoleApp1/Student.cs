@@ -50,6 +50,7 @@ namespace ConsoleApp1
                 keyValue.Value.ForEach(mark=>Console.Write(mark + " "));
                 Console.WriteLine();
             }
+            Console.WriteLine();
         }
         public Student()
         {
@@ -66,7 +67,7 @@ namespace ConsoleApp1
             Console.WriteLine("Форма обучения:" + this.status);
             Console.WriteLine("Курс:" + this.kurs);
             Console.WriteLine("Номер студенческого: " + this.nomer_studaka);
-
+            
 
         }
         public virtual void oplatit()
@@ -97,6 +98,7 @@ namespace ConsoleApp1
                 else
                 {
                     Console.WriteLine("Закройте академические задолженности");
+                    Console.WriteLine();
                 }
                 
             }

@@ -22,6 +22,7 @@ namespace ConsoleApp1
         {
             base.show_info();
             Console.WriteLine("Плата за обучение: " + this.price);
+            Console.WriteLine();
         }
         public override void oplatit()
         {

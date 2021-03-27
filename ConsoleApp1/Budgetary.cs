@@ -13,6 +13,7 @@ namespace ConsoleApp1
         {
             base.show_info();
             Console.WriteLine("Стипендия: " + this.stipendy);
+            Console.WriteLine();
         }
         public override void next_kurs()
         {
