@@ -23,11 +23,13 @@ namespace ConsoleApp1
 
         public void create_descipline (string discipline)
         {
+            //создаем ключ(предмет) без значений (оценок)
             List<int> list = new List<int>();
             record_book.Add(discipline,list);
         }
         public void record_mark(string discipline,int mark)
         {
+            //добавляем в словарь(зачетку) значение (оценку) по ключу(предмету)
             List<int> list = new List<int>();
             if(record_book.TryGetValue(discipline, out list))
             {
@@ -36,6 +38,7 @@ namespace ConsoleApp1
         }
         public void update_mark(string discipline,int semestr,int mark)
         {
+            //изменяем значение(оценку) в словаре(зачетке) по ключу(предмету) и индеку(семестру)
             List<int> list = new List<int>();
             if (record_book.TryGetValue(discipline, out list))
             {
@@ -44,6 +47,7 @@ namespace ConsoleApp1
         }
         public void show_record_book()
         {
+            // выводим содержимое зачетки(словаря)
             foreach (KeyValuePair<string, List<int>> keyValue in record_book)
             {
                 Console.Write(keyValue.Key + " - ");
@@ -52,15 +56,17 @@ namespace ConsoleApp1
             }
             Console.WriteLine();
         }
+        
         public Student()
         {
+            //инициализаия объекта 
             this.nomer_studaka = ++counter;
             this.kurs = 1;
         }
 
         public virtual void show_info()
         {
-
+            //вывод информации о студенте
             Console.WriteLine("ФИО: " + (this.first_name) + " " + (this.second_name));
             Console.WriteLine("Возраст: " + this.age);
             Console.WriteLine("Направление:" + this.profile);
@@ -72,15 +78,20 @@ namespace ConsoleApp1
         }
         public virtual void oplatit()
         {
+            //оплата обучения
             this.oplata = true;
         }
 
         public virtual void next_kurs()
         {
+            if(this.kurs==4)//у нас только бакалавриат, поэтому с 4 курса выше не прыгнуть
+            { return; }
+
             int count = 0;
             int tmp = 0;
             foreach (KeyValuePair<string, List<int>> keyValue in record_book)
             {
+                // смотрим значение по ключам в словаре и считаем количество 0 - долгов
                 int counter =keyValue.Value.Count;
                 for(int i=1;i<counter;i++)
                 {
@@ -92,20 +103,24 @@ namespace ConsoleApp1
                 }
                 if(count<3)
                 {
+                    //если долгов меньше 3, переводим студента
                     this.kurs++;
                     return;
                 }
                 else
                 {
+                    //иначе требуем закрыть долги
                     Console.WriteLine("Закройте академические задолженности");
                     Console.WriteLine();
                 }
                 
             }
         }
-        public Budgetary up_budgetary()
+        public  Budgetary up_budgetary()
         {
-            return new Budgetary(this.first_name, this.second_name, this.age, this.profile, this.kurs,this.nomer_studaka);
+            //перевод платника на бюджет
+            return new Budgetary(this.first_name, this.second_name, this.age, this.profile, this.kurs, this.nomer_studaka);
+            
         }
 
     }

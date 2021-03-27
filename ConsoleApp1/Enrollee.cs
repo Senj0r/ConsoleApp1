@@ -15,6 +15,7 @@ namespace ConsoleApp1
 
         public Student transform()
         {
+            //зачисление в студенты
             if(this.vstup_ball>200)
             {
                 return new Budgetary(this.first_name,this.second_name,this.age, this.profile);
@@ -31,6 +32,7 @@ namespace ConsoleApp1
 
         public Enrollee (string first_name,string second_name,int age, int vstup_ball,string profile)
         {
+            //инициализация абитуриента
             this.first_name = first_name;
             this.second_name = second_name;
             this.age = age;

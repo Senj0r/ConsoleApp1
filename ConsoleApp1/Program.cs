@@ -37,6 +37,8 @@ namespace ConsoleApp1
             s2.show_record_book();
             Student s3 = s2.up_budgetary();
             s3.show_info();
+            Enrollee a3 = new Enrollee("Аркадий", "Паровозов", 20, 94, "Программная инженерия");
+            a3.transform();
         }
     }
 }
